@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Job Hunt Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#f2f2f7" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="JobHunt" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script>
+      (function () {
+        var allowed = { apple: "#f2f2f7", "apple-dark": "#000000", samsung: "#f5f5f5", "samsung-dark": "#010101" };
+        var legacy = { paper: "apple", field: "apple", lamp: "apple-dark", night: "apple-dark" };
+        var t = "apple";
+        try { t = localStorage.getItem("jh-theme") || "apple"; } catch (e) {}
+        if (legacy[t]) t = legacy[t];
+        if (!allowed[t]) t = "apple";
+        document.documentElement.setAttribute("data-theme", t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", allowed[t]);
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- Alert banners live OUTSIDE #app so full re-renders never wipe them. -->
+    <div id="alerts"></div>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

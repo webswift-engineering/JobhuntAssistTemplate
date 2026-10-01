@@ -1,0 +1,19 @@
+{
+  "name": "Job Hunt Assistant",
+  "short_name": "JobHunt",
+  "description": "Your personal job hunt review queue, resume tailoring, and companies.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f1115",
+  "theme_color": "#0f1115",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body { margin: 0; font: 13px -apple-system, "Segoe UI", Roboto, sans-serif; background: #0f1115; color: #e6e9ef; }
+      header { padding: 10px 12px; border-bottom: 1px solid #2a2f3a; display: flex; align-items: center; gap: 8px; position: sticky; top: 0; background: #0f1115; z-index: 2; }
+      h1 { font-size: 14px; margin: 0; flex: 1; }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: #3ecf8e; }
+      .dot.off { background: #ff6b6b; }
+      section { padding: 10px 12px; border-bottom: 1px solid #20242d; }
+      button { background: #1e222b; color: #e6e9ef; border: 1px solid #2a2f3a; border-radius: 6px; padding: 5px 9px; font: inherit; cursor: pointer; }
+      button.primary { background: #2b5bd7; border-color: #2b5bd7; }
+      button.small { padding: 2px 7px; font-size: 11.5px; }
+      button:disabled { opacity: .5; cursor: default; }
+      input, textarea { background: #1e222b; color: #e6e9ef; border: 1px solid #2a2f3a; border-radius: 6px; padding: 5px 8px; font: inherit; width: 100%; box-sizing: border-box; }
+      .muted { color: #8b93a7; font-size: 11.5px; }
+      .job-title { font-weight: 600; margin-bottom: 2px; }
+      .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+      .q { border: 1px solid #20242d; border-radius: 8px; padding: 8px; margin-top: 8px; }
+      .q .label { font-weight: 600; margin-bottom: 4px; }
+      .q .ans { background: #171a21; border-radius: 6px; padding: 6px 8px; margin: 4px 0; white-space: pre-wrap; word-break: break-word; max-height: 130px; overflow: auto; }
+      .badge { display: inline-block; font-size: 10.5px; border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 1px; }
+      .badge.bank { background: #14432a; color: #3ecf8e; }
+      .badge.profile { background: #1c3a5e; color: #6ab0ff; }
+      .badge.ai { background: #4a3607; color: #f0b429; }
+      .badge.none { background: #3a1c1c; color: #ff8f8f; }
+      .badge.req { background: #33240d; color: #f0883e; }
+      .ok { color: #3ecf8e; }
+      .err { color: #ff8f8f; }
+      details > summary { cursor: pointer; color: #8b93a7; }
+      a { color: #5b8cff; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span id="dot" class="dot off" title="backend"></span>
+      <h1>Apply Copilot</h1>
+      <a id="open-dash" href="http://127.0.0.1:8787" target="_blank">Dashboard ↗</a>
+    </header>
+
+    <section id="job-section">
+      <div id="job-info" class="muted">Resolving this tab…</div>
+      <div class="row" style="margin-top:8px">
+        <button id="attach-resume" class="primary" disabled title="Inject this job's tailored PDF into the page's file input">📎 Attach tailored résumé</button>
+        <button id="stage-resume" class="small" disabled title="Copy the PDF to a fixed outbox folder so the file picker always finds it in the same place">📤 Stage to outbox</button>
+        <button id="open-folder" class="small" disabled title="Open this job's artifact folder in Explorer">📂 Folder</button>
+      </div>
+      <div id="resume-status" class="muted" style="margin-top:6px"></div>
+    </section>
+
+    <section id="stream-section" style="display:none">
+      <div id="stream-info"></div>
+      <div class="row" style="margin-top:8px">
+        <button id="stream-applied" class="primary" title="Record this job as applied, then load the next stream job in the tab">✓ Applied → next</button>
+        <button id="stream-skip" class="small" title="Mark skipped (leaves the queue for good) and load the next job">Skip ▸</button>
+        <button id="stream-end" class="small" title="Stop the stream here">■ End</button>
+      </div>
+      <div id="stream-status" class="muted" style="margin-top:6px"></div>
+    </section>
+
+    <section>
+      <div class="row">
+        <button id="scan" class="primary">⌕ Scan page for questions</button>
+        <button id="save-all" title="Re-scan the page and bank everything YOU typed, in one shot — no per-field saving">💾 Save my answers</button>
+        <span id="scan-status" class="muted"></span>
+      </div>
+      <div id="questions"></div>
+    </section>
+
+    <section>
+      <details>
+        <summary>⚙ Copilot settings</summary>
+        <div style="padding-top:8px; display:flex; flex-direction:column; gap:8px;">
+          <label class="muted"><input type="checkbox" id="auto-llm" style="width:auto" /> auto-ask DeepSeek during ATS autofill (off = Ask AI here only)</label>
+          <div class="row">
+            <button id="grant-all" class="small" title="One permission prompt that lets Scan work on every site without per-site prompts">Enable on all sites</button>
+            <span id="grant-status" class="muted"></span>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <script src="jobKey.js"></script>
+    <script src="panel.js"></script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "contact": {
+    "name": "Your Name",
+    "email": "you@example.com",
+    "phone": "",
+    "location": "City, ST",
+    "links": ["https://linkedin.com/in/you"]
+  },
+  "summary": "Senior backend engineer with experience building APIs, identity systems, and cloud-native services.",
+  "skills": {
+    "Backend": ["Java", "Spring Boot", "Node.js", "TypeScript"],
+    "Cloud": ["AWS", "Kubernetes", "Docker"],
+    "Security": ["OAuth2", "OIDC"]
+  },
+  "experience": [
+    {
+      "company": "Example Corp",
+      "title": "Senior Software Engineer",
+      "location": "City, ST",
+      "start": "2020-01",
+      "end": "Present",
+      "bullets": [
+        {
+          "id": "example-1",
+          "text": "Built REST APIs in Node.js and TypeScript serving 1M+ daily requests.",
+          "tags": ["node", "typescript", "api"]
+        },
+        {
+          "id": "example-2",
+          "text": "Led PostgreSQL migration and query optimization reducing p95 latency by 40%.",
+          "tags": ["postgresql", "database"]
+        }
+      ]
+    }
+  ],
+  "education": [
+    { "school": "University Example", "degree": "B.S. Computer Science", "year": "2018" }
+  ]
+}

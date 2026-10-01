@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Job Hunt Assistant">
+  <rect width="512" height="512" rx="112" fill="#0f1115"/>
+  <rect x="96" y="150" width="320" height="236" rx="28" fill="none" stroke="#3b82f6" stroke-width="26"/>
+  <path d="M196 150v-26a34 34 0 0 1 34-34h52a34 34 0 0 1 34 34v26" fill="none" stroke="#3b82f6" stroke-width="26"/>
+  <circle cx="238" cy="270" r="52" fill="none" stroke="#3ecf8e" stroke-width="24"/>
+  <line x1="276" y1="308" x2="330" y2="362" stroke="#3ecf8e" stroke-width="24" stroke-linecap="round"/>
+</svg>

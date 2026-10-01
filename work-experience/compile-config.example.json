@@ -1,0 +1,12 @@
+{
+  "employers": {
+    "Example Corp": ["example", "examplecorp", "ex-corp"],
+    "Acme Inc": ["acme", "acme labs"]
+  },
+  "codenames": {
+    "PROJECT-FALCON": "fraud detection system",
+    "KESTREL": "automated code-review pipeline",
+    "HERON": "internal ticketing system"
+  },
+  "confirmedMetrics": ["120 tickets closed", "40 code reviews"]
+}

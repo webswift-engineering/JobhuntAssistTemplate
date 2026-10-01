@@ -1,0 +1,18 @@
+node_modules/
+dist/
+*.log
+.env
+backend/data/
+.DS_Store
+.vscode/
+
+# runtime logs (server.log rotates; apply-debug carries screenshots)
+backend/logs/
+
+# your own data — never commit it
+work-experience/*
+!work-experience/README.md
+!work-experience/compile-config.example.json
+applications/
+backend/data/master-profile*.json
+!backend/master-profile.example.json

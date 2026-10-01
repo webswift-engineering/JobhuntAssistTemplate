@@ -1,0 +1,90 @@
+{
+  "manifest_version": 3,
+  "name": "Job Capture",
+  "version": "0.8.0",
+  "description": "Captures jobs/referrals from the pages you browse and feeds the local Job Hunt Assistant. Passive \u2014 you just browse.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "tabs",
+    "clipboardWrite",
+    "alarms",
+    "sidePanel",
+    "webNavigation"
+  ],
+  "side_panel": {
+    "default_path": "panel.html"
+  },
+  "host_permissions": [
+    "http://localhost:8787/*",
+    "http://127.0.0.1:8787/*",
+    "https://*.indeed.com/*",
+    "https://*.linkedin.com/*",
+    "https://*.greenhouse.io/*",
+    "https://jobs.ashbyhq.com/*",
+    "https://*.lever.co/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.indeed.com/jobs*",
+        "https://*.indeed.com/q-*",
+        "https://*.indeed.com/viewjob*",
+        "https://*.linkedin.com/jobs/*"
+      ],
+      "js": [
+        "registry.js",
+        "parsers/indeed.js",
+        "parsers/linkedin.js",
+        "content.js",
+        "easyApply.js",
+        "jobKey.js",
+        "applyCore.js",
+        "assist.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.linkedin.com/preload/*"
+      ],
+      "js": [
+        "easyApply.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://job-boards.greenhouse.io/*",
+        "https://boards.greenhouse.io/*",
+        "https://jobs.ashbyhq.com/*",
+        "https://jobs.lever.co/*"
+      ],
+      "js": [
+        "applyAdapters.js",
+        "applyCore.js",
+        "applyEngine.js",
+        "assist.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}
